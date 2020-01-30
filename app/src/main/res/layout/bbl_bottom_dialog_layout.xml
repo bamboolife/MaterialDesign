@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+   >
+
+    <!--底部菜单布局-->
+
+    <!--LinearLayout底部布局菜单  include布局中不能添加id 否则就会报setLayoutParameter异常-->
+    <include
+        layout="@layout/bbl__bottom_sheet_layout" />
+
+    <!--RecyclerView底部布局菜单-->
+    <!--<include-->
+    <!--layout="@layout/layout_bottom_dialog_recycler" />-->
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="16dp"
+        android:src="@android:drawable/ic_menu_share"
+        tools:ignore="MissingConstraints" />
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
