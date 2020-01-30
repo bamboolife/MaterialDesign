@@ -21,6 +21,7 @@
 - 4.AppBarLayout还需要一个单独的滚动成员，才能知道自己何时滚动；也就是说：你需要设置你的Scrolling view的behavior（app:layout_behavior）为AppBarLayout.ScrollingViewBehavior来通知AppBarLayout什么时候滚动。
 
 layout_scrollFlags的属性说明：
+
 | 属性 | 说明 |
 |:----- |:---------- |
 | SCROLL_FLAG_SCROLL | 对应xml布局中的scroll，如果要设置其他的滚动flag，这个flag必须要设置，否则无效;collapse时设置该flag的view先全部折叠，expand的时等NestedScrollView滑动到顶部设置该flag的view才会出现。|
