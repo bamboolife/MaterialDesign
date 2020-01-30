@@ -72,6 +72,10 @@ app:layout_collapseParallaxMultiplier="0.8"和app:layout_collapseMode="parallax"
 | none | 不使用任何模式 |
 > pin只有在CollapsingToolbarLayout中设置了app:layout_scrollFlags="scroll|exitUntilCollapsed"时Toolbar才会固定到最上面；(不清楚是必须配合使用还是bug，没看源码，有时间在研究)
 
+#### 在CollapsingToolbarLayout中的Toolbar布局的高度（android:layout_height）必须给固定值或者“?attr/actionBarSize”，否则设置的title不会显示；
+
+
+
 
 
 
