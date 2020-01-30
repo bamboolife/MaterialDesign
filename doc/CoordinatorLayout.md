@@ -30,6 +30,47 @@ layout_scrollFlags的属性说明：
 | SCROLL_FLAG_ENTER_ALWAYS_COLLAPSED |   对应xml布局中的enterAlwaysCollapsed，是enterAlways的附加flag，使设置该flag的view在进入屏幕时最初只滑动显示到它的collapsed height（minHeight），一旦NestedScrollView滑到顶部，该view再滑动显示剩余的部分。collapsing时先折叠完毕才能使NestedScrollView滚动；单独使用时与只设置scroll flag一样，一般与enter_always一起使用   |
 | SCROLL_FLAG_SNAP | 对应xml布局中的snap，设置该flag的view在滚动停止时，如果没有完全显示，会自动滚到到最近的一个边界（顶端、中线和下线）;一般与上面的几种情况一起使用，有阻尼的效果；|
 
+### CollpasingToolbarLayout说明
+
+#### CollapsingToolbarLayout是一个实现了折叠效果的Toolbar的包装；它被设计用来作为AppBarLayout的直接子类来使用；
+
+#### CollpasingToolbarLayout包含一下特点：
+
+- 1.CollapsingTitle-折叠的title：在CollapsingToolbarLayout全部展开时，title的显示的大小会比折叠在一起大些，title会随着屏幕的滚动变小；可以通过CollapsingToolbarLayout中的setTitle（）方法改变title的显示内容；title的外观（颜色，大小）可以通过此类对象的collapsedTextAppearance属性改变折叠时的外观，通过expandedTextAppearance属性改变展开时的外观；
+- 2.Content scrim-折叠后的背景：CollapsingToolbarLayout完全折叠后的背景；当滚动位置到达一定的阈值，就会隐藏或者显示Toolbar的背景色；
+
+- 3.Status bar scrim-状态栏背景：当滚动到达一定阈值，状态栏背景会隐藏或显示在状态栏后面；可以通过setStatusBarScrim(Drawable)方法改变这个状态栏背景，这个设置仅仅只能在5.0以上的设备并且设置了fitSystemWindows才能有效果；
+
+- 4.Parallax scrolling children-CollapsingToolbarLayout的子view滚动时的视觉效果：CollapsingToolbarLayout子视图可以选择以视差的方式在布局中滚动；通过在xml中设置CollapsingToolbarLayout子View属性的app:layout_collapseMode = "parallax"和app:layout_collapseParallaxMultiplier = "float"来实现；
+
+- 5.Pinned position children-固定CollapsingToolbarLayout子View的位置（一般固定的是Toolbar的位置）：子view能被固定在任何位置；通过在xml中设置：app:layout_collapseMode="pin"来实现；在实际的测试中发现这个设置无效果，只要在CollapsingToolbarLayout中设置app:layout_scrollFlags="scroll|exitUntilCollapsed”才可以使Toolbar固定在最上面的位置；
+
+> ** 注意：不要在运行时动态人为的给Toolbar添加子View**
+
+#### CollapsingToolbarLayout中常用来设置的属性
+
+| 属性 | 说明 |
+|:----- |:---------- |
+| app:collapsedTitleGravity="left|center_vertical" | 折叠时Toolbar的标题显示的位置 |
+| app:expandedTitleGravity="left|bottom" | 展开时Toolbar的标题显示的位置 |
+| app:collapsedTitleTextAppearance="@style/CollapsingToolbarLayoutTextTheme" | 折叠时Toolbar的字体颜色大小设置；与其对应的还有个app:expandedTitleTextAppearance展开属性；具体的style下面的代码展示；|
+| app:contentScrim="@color/colorPrimary" | Toolbar完全折叠时的背景色 |
+| app:expandedTitleMarginStart="10dp" | 展开时Toolbar距离左边的间距 |
+| app:scrimAnimationDuration="1000" | 设置Toolbar折叠时，颜色变为contentScrim设置的颜色时渐变的时间； |
+| app:expandedTitleGravity | 设置toolbar展开时，title所在的位置；相对的还有collpasedTitleGravity等属性； |
+| app:titleEnabled="true" | 这个属性默认是true，也就是你不设置就是true；如果设置为false，则在展开和折叠时都只有最上方的toolbar显示toolbar中设置的title，不会显示CollapsingToolbarLayout中设置的title； |
+
+#### 在CollapsingToolbarLayout中子View的ImageView中常设置
+
+app:layout_collapseParallaxMultiplier="0.8"和app:layout_collapseMode="parallax"两个属性，可以在折叠时给用户一个视差效果；
+
+#### layout_collapseMode(折叠模式）说明
+| 属性 | 说明 |
+|:----- |:---------- |
+| pin |         |
+| parallax |      |
+| none | 不使用任何模式 |
+
 
 
 
