@@ -67,7 +67,7 @@ app:layout_collapseParallaxMultiplier="0.8"和app:layout_collapseMode="parallax"
 #### layout_collapseMode(折叠模式）说明
 | 属性 | 说明 |
 |:----- |:---------- |
-| pin |    当CollapsingToolbarLayout完全收缩后，Toolbar还可以保留在屏幕上     |
+| pin |    当CollapsingToolbarLayout完全收缩后，Toolbar还可以保留在屏幕上.只有在CollapsingToolbarLayout中设置了app:layout_scrollFlags="scroll|exitUntilCollapsed"时Toolbar才会固定到最上面(不太清楚是必须配合使用还是bug)     |
 | parallax |   设置为这个模式时，在内容滚动时，CollapsingToolbarLayout中的View（比如ImageView)也可以同时滚动，实现视差滚动效果，通常和layout_collapseParallaxMultiplier(设置视差因子)搭配使用。视差滚动因子，值为：0~1   |
 | none | 不使用任何模式 |
 
